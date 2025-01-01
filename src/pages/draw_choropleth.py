@@ -1,34 +1,32 @@
-import folium
+import json
+import pandas as pd
+import plotly.express as px
 
-
-def generate_choropleth_map(df, disease):
-    """_summary_
-
-    Générer une carte choropleth avec Folium pour la maladie dont le nom
-    est passé en argument
-
-    Args:
-        df (_type_): le dataset déjà chargé avec Pandas
-        disease (_type_): le nom de maladie 
-    """
-    coords = [37.8, -96]
-    us_counties = 'counties.geojson'
-    m = folium.Map(location = coords, zoom_start=4)
-
-    folium.Choropleth(
-        geo_data=us_counties,
-        name='US_Obesity',
-        data=df,
-        columns=['CountyName', disease],
-        key_on='feature.properties.NAME',
-        fill_color='RdYlGn_r',
-        bins=[15, 25, 30, 40, 50, 60],
-        fill_opacity=0.7,
-        line_opacity=0.2,
-        legend_name='Obesity'
-    ).add_to(m)
-
-    folium.LayerControl().add_to(m)
-
-    map_html = str(m.get_root().render())
-    return map_html
+def generate_choropleth_map(df, disease, geojson_path):
+    with open(geojson_path) as f:
+        counties = json.load(f)
+    
+    df['CountyFIPS'] = df['CountyFIPS'].astype(str).str.zfill(5)
+    
+    fig = px.choropleth(
+        df,
+        geojson=counties,
+        locations='CountyFIPS',
+        featureidkey='properties.GEOID',
+        color=disease,
+        color_continuous_scale='RdYlGn_r',
+        scope="usa", # Étant donné que nous étudions les États-Unis dans notre cas
+        hover_name='CountyName',
+        hover_data={
+            'State name' : True,
+            'Total Population' : True,
+            'Total adult population' : True,
+            'CountyFIPS' : False
+        }
+    )
+    
+    fig.update_layout(
+        margin={"r":0,"t":30,"l":0,"b":0},
+    )
+    
+    return fig
