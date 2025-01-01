@@ -24,7 +24,7 @@ folium.Choropleth(
     columns=['CountyName', 'OBESITY_CrudePrev'],
     key_on='feature.properties.NAME',
     fill_color='RdYlGn_r',
-    bins=[10, 15, 20, 25, 30, 40, 50, 60],
+    bins=[15, 25, 30, 40, 50, 60],
     fill_opacity=0.7,
     line_opacity=0.2,
     legend_name='Obesity'
