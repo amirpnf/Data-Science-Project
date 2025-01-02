@@ -1,0 +1,21 @@
+.custom-button {
+    width: 300px; 
+    height: 80px; 
+    border-radius: 10px;
+    font-size: 20px; 
+    font-weight: bold; 
+    text-align: center; 
+    margin: 10px; 
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+}
+
+.custom-button:hover {
+    transform: scale(1.05); 
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4); 
+}
+
+.dropdown-container {
+    width: 300px;
+    margin: 20px auto;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}

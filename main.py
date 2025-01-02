@@ -1,77 +1,74 @@
 import dash
-from dash import dcc, html, Input, Output
+from dash import dcc, html, Input, Output, callback
 import plotly.express as px
 import pandas as pd
 import dash_bootstrap_components as dbc
-from src.pages.draw_histogram import draw_histogram
-from src.pages.draw_choropleth import generate_choropleth_map
 from src.utils.get_data import get_dataset
+from src.utils.draw_choropleth import generate_choropleth_map
+from src.utils.draw_histogram import draw_histogram
 from src.utils.clean_dataset import clean_dataset
+from src.pages.homepage import create_home_layout 
+from src.pages.choropleth_maps_page import create_choropleth_layout
+from src.pages.histograms import create_histograms_layout
+from config import *
 
 get_dataset()
 
 # A call to clean_dataset() here ...
+clean_dataset(RAW_DATA_DIR)
 
-clean_dataset('data/raw/US_Counties_Health_Stats.csv')
-df = pd.read_csv('data/cleaned/US_Counties_Health_Stats_CLEANED.csv')
+# The cleaned dataset will be saved in a new folder called cleaned
+df = pd.read_csv(CLEANED_DATA_DIR)
 
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
-DEFAULT_DISEASE = "OBESITY_CrudePrev"
+# Home page layout
+home_layout = create_home_layout()
 
-app.layout = dbc.Container(
-    fluid=True,
-    className='app-container',
+# Choropleth page layout
+choropleth_layout = create_choropleth_layout()
+
+# Histograms' page layout
+histograms_layout = create_histograms_layout()
+
+# App layout
+app.layout = html.Div(
     children=[
-        html.H1('Disease Analysis Across US Counties', className='title', style={'textAlign': 'center'}),
-        html.Div(  # Wrap label and radio items in a Div for centering
-            style={'textAlign': 'center', 'margin-bottom': '1rem'}, # Center align and add margin
-            children=[
-                html.Label(
-                    'Select a disease:',
-                    className='label',
-                    style={'font-style': 'italic', 'font-weight': 'bold', 'textAlign': 'center'}, # Bold italic text
-                ),
-                dcc.Dropdown(
-                    id='disease-selector',
-                    options=[
-                        {'label': 'Obesity', 'value': 'OBESITY_CrudePrev'},
-                        {'label': 'Cancer', 'value': 'CANCER_CrudePrev'},
-                        {'label': 'Stroke', 'value': 'STROKE_CrudePrev'},
-                        {'label': 'Arthritis', 'value': 'ARTHRITIS_CrudePrev'},
-                        {'label': 'Depression', 'value': 'DEPRESSION_CrudePrev'},
-                        {'label': 'Diabetes', 'value': 'DIABETES_CrudePrev'},
-                        {'label': 'High cholestrol', 'value': 'HIGHCHOL_CrudePrev'},
-                        {'label': 'Teeth lost', 'value': 'TEETHLOST_CrudePrev'}
-                    ],
-                    value=DEFAULT_DISEASE,
-                    className='dropdown-container',
-                    clearable=False,
-                ),
-            ],
-        ),
-        dbc.Row(
-            [
-                dbc.Col(dcc.Graph(id='choropleth-map'), md=6, className='graph-container'),
-                dbc.Col(dcc.Graph(id='disease-histogram'), md=6, className='graph-container'),
-            ]
-        ),
-    ],
+        dcc.Location(id='url', refresh=False),
+        html.Div(id='page-content'),
+    ]
 )
 
 @app.callback(
-    [Output('choropleth-map', 'figure'), Output('disease-histogram', 'figure')],
+    Output('page-content', 'children'),
+    [Input('url', 'pathname')]
+)
+def display_page(pathname):
+    if pathname == '/choropleth':
+        return choropleth_layout
+    
+    if pathname == '/histograms':
+        return histograms_layout
+
+    return home_layout
+
+
+@app.callback(
+    Output('choropleth-map', 'figure'),
     [Input('disease-selector', 'value')]
 )
-
-def update_visualisation(selected_disease):
-    
-    choropleth_fig = generate_choropleth_map(df, selected_disease, 'counties.geojson')
+def update_choropleth(selected_disease):
+    choropleth_fig = generate_choropleth_map(df, selected_disease, GEOJSON_FILE)
     choropleth_fig.update_layout(coloraxis_colorbar=dict(title='Prevalence (%)'))
+    return choropleth_fig
 
-    histogram_fig = draw_histogram(df, selected_disease)
 
-    return choropleth_fig, histogram_fig
+@app.callback(
+    Output('disease-histogram', 'figure'),
+    [Input('disease-histogram-selector', 'value')]
+)
+def update_histogram(selected_disease):
+    return draw_histogram(df, selected_disease)
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=DEBUG)

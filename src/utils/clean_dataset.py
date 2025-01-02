@@ -8,4 +8,4 @@ def clean_dataset(path):
         'StateDesc' : 'State name',
         'TotalPop18plus' : 'Total adult population'
     })
-    df.to_csv('data/cleaned/US_Counties_Health_Stats_CLEANED.csv', header=True, index=False)
+    df.to_csv('data/cleaned/US_Counties_Health_Stats_Cleaned.csv', header=True, index=False)
