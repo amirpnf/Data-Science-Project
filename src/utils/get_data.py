@@ -2,6 +2,38 @@ import os
 import pandas as pd
 import requests
 
+def fetch_cdc_data(api_url, fields=None, batch_size=1000):
+    """
+    Fetch all data from the CDC API and return it as a pandas DataFrame.
+
+    :param api_url: The API endpoint URL.
+    :param fields: List of fields to fetch (optional).
+    :param batch_size: Number of records to fetch per API call.
+    :return: A pandas DataFrame containing the fetched data.
+    """
+    all_data = []
+    offset = 0
+    
+    query_params = f"$limit={batch_size}&$offset={offset}"
+    if fields:
+        query_params = f"$select={','.join(fields)}&" + query_params
+    
+    while True:
+        response = requests.get(f"{api_url}?{query_params}")
+        if response.status_code != 200:
+            raise Exception(f"API request failed: {response.status_code} - {response.text}")
+        
+        batch_data = response.json()
+        if not batch_data:  # Stop if no more data
+            break
+        
+        all_data.extend(batch_data)
+        offset += batch_size
+        query_params = query_params.replace(f"$offset={offset - batch_size}", f"$offset={offset}")
+    
+    return pd.DataFrame(all_data)
+
+
 def get_dataset():
     """_summary_
     Download the dataset and store it in data/raw directory

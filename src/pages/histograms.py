@@ -15,16 +15,7 @@ def create_histograms_layout():
             ),
             dcc.Dropdown(
                 id='disease-histogram-selector',
-                options=[
-                    {'label': 'Obesity', 'value': 'OBESITY_CrudePrev'},
-                    {'label': 'Cancer', 'value': 'CANCER_CrudePrev'},
-                    {'label': 'Stroke', 'value': 'STROKE_CrudePrev'},
-                    {'label': 'Arthritis', 'value': 'ARTHRITIS_CrudePrev'},
-                    {'label': 'Depression', 'value': 'DEPRESSION_CrudePrev'},
-                    {'label': 'Diabetes', 'value': 'DIABETES_CrudePrev'},
-                    {'label': 'High cholesterol', 'value': 'HIGHCHOL_CrudePrev'},
-                    {'label': 'Teeth lost', 'value': 'TEETHLOST_CrudePrev'}
-                ],
+                options=OPTIONS,
                 value=DEFAULT_DISEASE,
                 className='dropdown-container',
                 clearable=False,

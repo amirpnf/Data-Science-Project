@@ -3,7 +3,7 @@ from dash import dcc, html, Input, Output, callback
 import plotly.express as px
 import pandas as pd
 import dash_bootstrap_components as dbc
-from src.utils.get_data import get_dataset
+from src.utils.get_data import get_dataset, fetch_cdc_data
 from src.utils.draw_choropleth import generate_choropleth_map
 from src.utils.draw_histogram import draw_histogram
 from src.utils.clean_dataset import clean_dataset
@@ -12,10 +12,13 @@ from src.pages.choropleth_maps_page import create_choropleth_layout
 from src.pages.histograms import create_histograms_layout
 from config import *
 
-get_dataset()
+try:
+    data = fetch_cdc_data(API_URL, fields=FIELDS)
+except Exception as e:
+    print(f"Error fetching data: {e}")
 
 # A call to clean_dataset() here ...
-clean_dataset(RAW_DATA_DIR)
+clean_dataset(data)
 
 # The cleaned dataset will be saved in a new folder called cleaned
 df = pd.read_csv(CLEANED_DATA_DIR)

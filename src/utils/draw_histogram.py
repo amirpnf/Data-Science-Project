@@ -1,13 +1,17 @@
 import plotly.express as px
+from config import *
 
 
 def draw_histogram(df, selected_disease):
+
+    if selected_disease is None :
+        selected_disease = DEFAULT_DISEASE
 
     histogram_fig = px.histogram(
         df,
         x=selected_disease,
         nbins=30,
-        title=f"Distribution of {selected_disease.replace('_', ' ').split()[0].lower()} in US counties (2024)",  # Added closing parenthesis here
+        title=f"Distribution of {selected_disease.split()[0]} in US counties (2024)",
         labels={selected_disease: "Prevalence (%)"},
         color_discrete_sequence=['purple']
     )

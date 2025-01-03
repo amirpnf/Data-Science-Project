@@ -1,13 +1,19 @@
 import json
 import pandas as pd
 import plotly.express as px
+from config import *
 
 def generate_choropleth_map(df, disease, geojson_path):
+
+
+    if disease is None :
+        disease = DEFAULT_DISEASE
+
     with open(geojson_path) as f:
         counties = json.load(f)
     
     df['CountyFIPS'] = df['CountyFIPS'].astype(str).str.zfill(5)
-    
+
     fig = px.choropleth(
         df,
         geojson=counties,
@@ -21,10 +27,10 @@ def generate_choropleth_map(df, disease, geojson_path):
             'State name' : True,
             'Total Population' : True,
             'Total adult population' : True,
-            'CountyFIPS' : False
+            'CountyFIPS' : False,
         }
     )
-    
+
     fig.update_layout(
         margin={"r":0,"t":30,"l":0,"b":0},
     )
