@@ -1,6 +1,7 @@
 import os 
 import pandas as pd
 import requests
+from config import *
 
 def fetch_cdc_data(api_url, fields=None, batch_size=1000):
     """

@@ -23,6 +23,18 @@ def create_home_layout():
                         width='auto',
                         style={'textAlign' : 'center'},
                         className='custom-button'
+                    ),
+                    dbc.Col(
+                        dbc.Button('Comparisons', href='/comparisons', color='secondary', size='lg'),
+                        width='auto',
+                        style={'textAlign' : 'center'},
+                        className='custom-button'
+                    ),
+                    dbc.Col(
+                        dbc.Button('Guide and conclusion', href='/guide', color='secondary', size='lg'),
+                        width='auto',
+                        style={'textAlign' : 'center'},
+                        className='custom-button'
                     )
                 ],
                 justify='center'
