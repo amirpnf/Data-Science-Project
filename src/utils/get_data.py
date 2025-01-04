@@ -32,7 +32,7 @@ def fetch_cdc_data(api_url, fields=None, batch_size=1000):
         offset += batch_size
         query_params = query_params.replace(f"$offset={offset - batch_size}", f"$offset={offset}")
     
-    return pd.DataFrame(all_data)
+    pd.DataFrame(all_data).to_csv('data/raw/US_Counties_Health_Stats.csv', index=True, header=True)
 
 
 def get_dataset():

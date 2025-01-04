@@ -1,6 +1,8 @@
 import pandas as pd
 
-def clean_dataset(df):
+def clean_dataset(path):
+
+    df = pd.read_csv(path)
 
     df = df.rename(columns = {
         'TotalPopulation' : 'Total Population',
