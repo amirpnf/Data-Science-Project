@@ -7,13 +7,14 @@ import dash_bootstrap_components as dbc
 from src.utils.get_data import get_dataset, fetch_cdc_data
 from src.utils.draw_choropleth import generate_choropleth_map
 from src.utils.draw_histogram import draw_histogram
-from src.utils.visualizations import create_grouped_bar_charts
+from src.utils.visualizations import plot_grouped_bar_chart
 from src.utils.clean_dataset import clean_dataset
 from src.pages.homepage import create_home_layout 
 from src.pages.choropleth_maps_page import create_choropleth_layout
 from src.pages.histograms import create_histograms_layout
 from src.pages.comparisons_page import create_comparisons_layout 
 from src.pages.guide import create_guide_page_layout
+from src.pages.comparisons_graph import create_comparisons_graph_layout
 from config import *
 
 try:
@@ -30,6 +31,7 @@ app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheet
 home_layout = create_home_layout()
 choropleth_layout = create_choropleth_layout()
 histograms_layout = create_histograms_layout()
+comparisons_graph_layout = create_comparisons_graph_layout()
 comparisons_layout = create_comparisons_layout()  
 guide_page_layout = create_guide_page_layout()
 
@@ -46,14 +48,16 @@ app.layout = html.Div(
     [Input('url', 'pathname')]
 )
 def display_page(pathname):
-    if pathname == '/choropleth':
+    '''if pathname == '/choropleth':
         return choropleth_layout
     if pathname == '/histograms':
         return histograms_layout
-    if pathname == '/comparisons':
+    if pathname == '/comparisons-graph':
+        return comparisons_graph_layout # A definir
+    if pathname == '/comparisons-bar':
         return comparisons_layout  
     if pathname == '/guide':
-        return guide_page_layout
+        return guide_page_layout'''
     return home_layout
 
 
@@ -77,15 +81,11 @@ def update_histogram(selected_disease):
 
 @app.callback(
     Output('correlation-heatmap', 'figure'),
-    [Input('disease-comparison-selector', 'value')]
+    [Input('disease1-comparison-selector', 'value'),
+     Input('disease2-comparison-selector', 'value')]
 )
-def update_comparison(selected_diseases):
-    if not selected_diseases:
-        return go.Figure()
-
-    corr_matrix = df[selected_diseases].corr()
-    grouped_bar_chart = create_grouped_bar_charts(corr_matrix)
-    return grouped_bar_chart
+def update_comparison(first_disease, second_disease):
+    return plot_grouped_bar_chart(df, first_disease, second_disease)
 
 if __name__ == '__main__':
     app.run_server(debug=DEBUG)

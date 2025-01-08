@@ -2,11 +2,10 @@ from dash import dcc, html
 import dash_bootstrap_components as dbc
 from config import *
 
-def create_comparisons_layout():
-    return dbc.Container(
-        fluid=True,
-        className='comparisons-container',
-        children=[
+
+def create_comparisons_graph_layout():
+    return dbc.Col(
+            [
             html.H1('Comparisons', className='title', style={'textAlign': 'center'}),
             html.Label(
                 'Select diseases to compare:',
@@ -14,10 +13,16 @@ def create_comparisons_layout():
                 style={'font-style': 'italic', 'font-weight': 'bold', 'textAlign': 'center'},
             ),
             dcc.Dropdown(
-                id='disease-comparison-selector',
+                id='disease1-comparison-selector',
                 options=OPTIONS,
-                value=[DEFAULT_DISEASE],
-                multi=True,
+                value=DEFAULT_DISEASE,
+                className='dropdown-container',
+                clearable=False,
+            ),
+            dcc.Dropdown(
+                id='disease2-comparison-selector',
+                options=OPTIONS,
+                value=DEFAULT_DISEASE,
                 className='dropdown-container',
                 clearable=False,
             ),
@@ -26,5 +31,6 @@ def create_comparisons_layout():
                 config={'displayModeBar': True},
                 style={'margin-top': '20px'}
             ),
-        ],
-    )
+            ],
+            width=12,  # Full width for the heatmap
+        )
