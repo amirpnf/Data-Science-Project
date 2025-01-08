@@ -10,7 +10,7 @@ def create_comparisons_graph_layout():
             html.Label(
                 'Select diseases to compare:',
                 className='label',
-                style={'font-style': 'italic', 'font-weight': 'bold', 'textAlign': 'center'},
+                style={'font-weight': 'bold', 'textAlign': 'center'},
             ),
             dcc.Dropdown(
                 id='disease1-comparison-selector',

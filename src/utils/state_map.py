@@ -24,6 +24,9 @@ def create_state_based_maps(data, disease1, disease2):
         color_continuous_scale='RdYlGn_r',
         scope="usa",
         hover_name='State name',
+        hover_data={
+            'State name' : False
+        }
     )
 
     # Create the second map
@@ -36,6 +39,9 @@ def create_state_based_maps(data, disease1, disease2):
         color_continuous_scale='RdYlGn_r',
         scope="usa",
         hover_name='State name',
+        hover_data = {
+            'State name' : False
+        }
     )
 
     fig1.update_layout(margin={"r":0, "t":30, "l":0, "b":0})

@@ -5,7 +5,7 @@ from config import *
 def create_maps_layout():
     return dbc.Row(
         [
-            html.H4('Comparison - Maps', className='title', style={'textAlign': 'center'}),
+            html.H4('State Comparison - Maps', className='title', style={'textAlign': 'center'}),
             dbc.Col(
                 [
                     dcc.Dropdown(

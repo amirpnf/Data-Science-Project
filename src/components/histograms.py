@@ -9,7 +9,7 @@ def create_histograms_layout():
                     html.Label(
                         'Select a disease:',
                         className='label',
-                        style={'font-style': 'italic', 'font-weight': 'bold', 'textAlign': 'center'},
+                        style={'font-weight': 'bold', 'textAlign': 'center'},
                     ),
                     dcc.Dropdown(
                         id='disease-histogram-selector',

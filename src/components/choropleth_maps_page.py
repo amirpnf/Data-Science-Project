@@ -5,7 +5,7 @@ from config import *
 def create_choropleth_layout():
     return dbc.Col(
             [
-                html.H3('Choropleth Maps', className='title', style={'textAlign': 'center'}),
+                html.H3('Map of US Counties', className='title', style={'textAlign': 'center'}),
                 html.Label(
                     'Select a disease:',
                     className='label',

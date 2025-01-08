@@ -4,6 +4,8 @@ import os
 def clean_dataset(path):
 
     df = pd.read_csv(path)
+    
+    os.makedirs(os.path.join("data", "cleaned"), exist_ok=True)
 
     df = df.rename(columns = {
         'TotalPopulation' : 'Total Population',
@@ -19,5 +21,4 @@ def clean_dataset(path):
         'TEETHLOST_CrudePrev': 'Teeth Lost Prevalence (%)'
     })
     df['CountyName'] = df['CountyName'].replace('DoÃ±a Ana', 'Doña Ana')
-    os.makedirs(os.path.join("data", "cleaned"), exist_ok=True)
     df.to_csv('data/cleaned/US_Counties_Health_Stats_Cleaned.csv', header=True, index=False)
