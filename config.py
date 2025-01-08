@@ -2,7 +2,9 @@
 
 RAW_DATA_DIR = "data/raw/US_Counties_Health_Stats.csv"
 CLEANED_DATA_DIR = "data/cleaned/US_Counties_Health_Stats_Cleaned.csv"
+STATE_DATA_DIR = "data/cleaned/US_States_Health_Stats.csv"
 GEOJSON_FILE = "counties.geojson"
+STATES_GEOJSON = "states.geojson"
 OUTPUT_MAP_FILE = "US_Counties_Health_Study.html"
 
 OPTIONS=[
@@ -32,7 +34,8 @@ LOG_LEVEL = "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
 
 # Miscellaneous settings
 DEFAULT_COUNTY = "Los Angeles"  # Example default value for filtering
-DEFAULT_DISEASE = "Obesity Prevalence (%)"
+DEFAULT_DISEASE1 = "Obesity Prevalence (%)"
+DEFAULT_DISEASE2 = "Diabetes Prevalence (%)"
 CACHE_DIR = "cache"  # Directory for caching intermediate data (if applicable)
 
 API_URL = "https://data.cdc.gov/resource/i46a-9kgh.json"

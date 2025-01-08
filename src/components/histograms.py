@@ -14,7 +14,7 @@ def create_histograms_layout():
                     dcc.Dropdown(
                         id='disease-histogram-selector',
                         options=OPTIONS,
-                        value=DEFAULT_DISEASE,
+                        value=DEFAULT_DISEASE1,
                         className='dropdown-container',
                         clearable=False,
                     ),

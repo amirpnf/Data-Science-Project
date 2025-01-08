@@ -5,9 +5,8 @@ from config import *
 
 def generate_choropleth_map(df, disease, geojson_path):
 
-
     if disease is None :
-        disease = DEFAULT_DISEASE
+        disease = DEFAULT_DISEASE1
 
     with open(geojson_path) as f:
         counties = json.load(f)

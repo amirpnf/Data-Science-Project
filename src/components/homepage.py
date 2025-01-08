@@ -3,6 +3,7 @@ import dash_bootstrap_components as dbc
 from src.components.choropleth_maps_page import create_choropleth_layout
 from src.components.histograms import create_histograms_layout
 from src.components.comparisons_graph import create_comparisons_graph_layout
+from src.components.state_map_layout import create_maps_layout
 from config import *
 
 def create_home_layout():
@@ -24,7 +25,8 @@ def create_home_layout():
             # Row 2: Correlation Heatmap
             dbc.Row(
                 [
-                    create_comparisons_graph_layout()
+                    create_comparisons_graph_layout(),
+                    create_maps_layout()
                 ],
                 align='center',
             ),

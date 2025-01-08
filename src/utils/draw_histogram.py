@@ -5,7 +5,7 @@ from config import *
 def draw_histogram(df, selected_disease):
 
     if selected_disease is None :
-        selected_disease = DEFAULT_DISEASE
+        selected_disease = DEFAULT_DISEASE1
 
     histogram_fig = px.histogram(
         df,

@@ -14,7 +14,7 @@ def create_choropleth_layout():
                 dcc.Dropdown(
                     id='disease-selector',
                     options=OPTIONS,
-                    value=DEFAULT_DISEASE,
+                    value=DEFAULT_DISEASE1,
                     className='dropdown-container',
                     clearable=False,
                 ),
