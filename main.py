@@ -9,12 +9,12 @@ from src.utils.draw_choropleth import generate_choropleth_map
 from src.utils.draw_histogram import draw_histogram
 from src.utils.visualizations import plot_grouped_bar_chart
 from src.utils.clean_dataset import clean_dataset
-from src.pages.homepage import create_home_layout 
-from src.pages.choropleth_maps_page import create_choropleth_layout
-from src.pages.histograms import create_histograms_layout
-from src.pages.comparisons_page import create_comparisons_layout 
-from src.pages.guide import create_guide_page_layout
-from src.pages.comparisons_graph import create_comparisons_graph_layout
+from src.components.homepage import create_home_layout 
+from src.components.choropleth_maps_page import create_choropleth_layout
+from src.components.histograms import create_histograms_layout
+from src.components.comparisons_page import create_comparisons_layout 
+from src.components.guide import create_guide_page_layout
+from src.components.comparisons_graph import create_comparisons_graph_layout
 from config import *
 
 try:
