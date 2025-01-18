@@ -1,4 +1,3 @@
-from click import style
 from dash import dcc, html
 import dash_bootstrap_components as dbc
 
@@ -16,7 +15,6 @@ def create_home_layout():
         className='homepage-container',
         children=[
             dbc.Row([
-
                 dbc.Col([
                     html.Div([
                         html.H2("Dashboard", className="mb-4", style={'position':'fixed'}),

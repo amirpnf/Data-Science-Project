@@ -17,6 +17,16 @@ python -m pip install -r requirements.txt
 
 Cela installera les outils requis pour la bonne exécution du programme final.
 
+2. Exécuter le programme : 
+
+Il suffit de taper cela dans un terminal ouvert dans le dossier DATA-SCIENCE-PROJECT:
+
+```bash
+python3 main.py
+```
+
+Le programme fonctionne également en mode *offline*.
+
 
 #### Data
 
@@ -45,6 +55,11 @@ Pour ajouter une nouvelle page ou un nouveau composant au programme, il faut sui
 3. Intégrer le layout : Ajouter un div ou un row dans le fichier homepage.py pour y inclure le layout que vous venez de créer.
 
 4. Créer le callback : Enfin, il faut définir le callback correspondant et l'ajouter dans le fichier callbacks.py, au sein de la fonction `init_callbacks()`.
+
+
+Nous utilisons un fichier **config.py** qui permet de mettre toutes les configurations techniques et 
+esthétiques du projet dans un seul endroit, facilitant ainsi le debugging, et la modification éventuelle
+des sturctures. 
 
 
 ### Rapport d'analyse
