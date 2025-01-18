@@ -1,1 +1,4 @@
-pip install requests dash_bootstrap_components json
+dash
+requests
+dash_bootstrap_components
+

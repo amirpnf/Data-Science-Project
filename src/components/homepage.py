@@ -1,7 +1,6 @@
 from click import style
 from dash import dcc, html
 import dash_bootstrap_components as dbc
-from qtconsole.mainwindow import background
 
 from src.components.choropleth_maps_page import create_choropleth_layout
 from src.components.state_health_score_layout import create_state_health_score_layout
