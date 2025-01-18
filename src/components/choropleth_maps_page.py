@@ -21,7 +21,7 @@ def create_choropleth_layout():
                 dcc.Graph(id='choropleth-map'),
             ],
             width=6,  # Half the width of the row
-            style={'padding': '20px', 'background-color': 'white', 'border-radius': '21px', 'width':'34vw', 'height': '30vw' },
+            style={'padding': '20px', 'background-color': 'white', 'border-radius': '21px', 'width':'34vw' },
 
     )
 
@@ -33,7 +33,7 @@ def create_choropleth_layout_health_score():
             ],
 
             width=6,
-            style={'padding': '20px', 'background-color': 'white', 'border-radius':'21px', 'width':'34vw', 'height':'30vw'}  # Add some padding to the container
+            style={'padding': '20px', 'background-color': 'white', 'border-radius':'21px', 'width':'34vw'}  # Add some padding to the container
     )
 
 def create_choropleth_layout_state_health_score():
@@ -44,5 +44,5 @@ def create_choropleth_layout_state_health_score():
             ],
 
             width=6,
-            style={'padding': '20px', 'background-color': 'white', 'border-radius':'21px', 'width':'34vw', 'height':'30vw', 'box-shadow': '1px 2px 50px -24px rgba(0,0,0,0.32)'}  # Add some padding to the container
+            style={'padding': '20px', 'background-color': 'white', 'border-radius':'21px', 'width':'34vw', 'box-shadow': '1px 2px 50px -24px rgba(0,0,0,0.32)'}  # Add some padding to the container
     )

@@ -25,11 +25,11 @@ def create_home_layout():
                         html.Div([
                             html.H4("Informations"),
                             html.P("Health problems by counties in USA")
-                        ], className="mt-4 p-3 text-white rounded", style={'background-color': '#39da00', 'width': '265px', 'position':'fixed', 'top':'100px'}),
+                        ], className="mt-4 p-3 text-white rounded", style={'background-color': '#39da00', 'width': '13vw', 'position':'fixed', 'top':'100px'}),
                         html.Div([
                             html.H4("Authors"),
                             html.P("BRAVARD Lorenzo     POUYANFAR AmirHossein    E3FI - 1l")
-                        ], className="mt-4 p-3 text-white rounded", style={'background-color': '#39da00', 'width': '265px', 'position':'fixed', 'bottom':'50px'}),
+                        ], className="mt-4 p-3 text-white rounded", style={'background-color': '#39da00', 'width': '13vw', 'position':'fixed', 'bottom':'50px'}),
                     ], className="sidebar p-4 h-100", style={'background-color': 'white'}),
                 ], width=2, style={'padding-left': '0', 'padding-right': '0','box-shadow': '-5px 2px 15px 5px rgba(0,0,0,0.32)', 'z-index':'5'}),
                 dbc.Col([
