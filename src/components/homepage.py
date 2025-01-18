@@ -53,6 +53,6 @@ def create_home_layout():
                         align='center', style={'margin':'20px', 'display':'flex', 'justify-content':'center'}
                     ),
                 ],
-                style={'background-color':'#e7f9ec', 'padding-left':'0'}
+                className="col-10", style={'background-color':'#e7f9ec', 'padding-left':'0'}
             )],),
  ]),

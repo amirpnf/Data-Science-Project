@@ -87,3 +87,4 @@ wheels/
 
 # Project specific
 data/cleaned/
+/.vs

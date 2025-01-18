@@ -36,7 +36,7 @@ Les CDC constituent la principale agence fédérale des États-Unis chargée de 
 Les centres produisent des informations visant à éclairer et améliorer les décisions gouvernementales en matière de santé. Ils œuvrent également à la promotion de la santé grâce à des partenariats avec les départements de la santé des différents États américains et diverses organisations. Les CDC, qui relèvent du département de la Santé et des Services sociaux des États-Unis, ont leur siège dans le comté de DeKalb, près d'Atlanta, en Géorgie.
 
 Le dataset que nous utilisons, dans sa forme raw (pas encore filtré et nettoyé), contient essentiellement la prévalence des maladies et syndromes 
-différents à travers les États-Unis. Nous en avons choisi les principaux, notemment l'obésité, sur laquelle nous 
+différents à travers les États-Unis. Nous en avons choisi les principaux, notamment l'obésité, sur laquelle nous 
 centrons notre conclusion plus bas.
 
 
@@ -58,8 +58,8 @@ Pour ajouter une nouvelle page ou un nouveau composant au programme, il faut sui
 
 
 Nous utilisons un fichier **config.py** qui permet de mettre toutes les configurations techniques et 
-esthétiques du projet dans un seul endroit, facilitant ainsi le debugging, et la modification éventuelle
-des sturctures. 
+esthétiques du projet dans un seul endroit, facilitant ainsi le débogage, et la modification éventuelle
+des structures. 
 
 
 ### Rapport d'analyse
