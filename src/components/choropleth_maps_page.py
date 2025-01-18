@@ -35,3 +35,14 @@ def create_choropleth_layout_health_score():
             width=6,
             style={'padding': '20px', 'background-color': 'white', 'border-radius':'21px', 'width':'34vw', 'height':'30vw'}  # Add some padding to the container
     )
+
+def create_choropleth_layout_state_health_score():
+    return dbc.Col(
+            [
+                html.H3('Health Score by state', className='title', style={'textAlign': 'center'}),
+                dcc.Graph(id='choropleth-map-state-health-score'),
+            ],
+
+            width=6,
+            style={'padding': '20px', 'background-color': 'white', 'border-radius':'21px', 'width':'34vw', 'height':'30vw'}  # Add some padding to the container
+    )
