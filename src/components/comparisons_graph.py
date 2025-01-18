@@ -33,4 +33,6 @@ def create_comparisons_graph_layout():
             ),
             ],
             width=12,  # Full width for the heatmap
-        )
+            style={'padding': '20px', 'background-color': 'white', 'border-radius': '21px'}
+
+    )

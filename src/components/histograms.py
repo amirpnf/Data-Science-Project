@@ -20,5 +20,5 @@ def create_histograms_layout():
                     ),
                     dcc.Graph(id='disease-histogram'),
                 ],
-                width=6,  # Half the width of the row
+                width=6, style={'padding':'20px', 'border-radius': '13px', 'background-color': 'white', 'margin':'20px', 'box-shadow': '1px 2px 50px -24px rgba(0,0,0,0.32)'},
             )

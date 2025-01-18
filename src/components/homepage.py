@@ -1,6 +1,10 @@
+from click import style
 from dash import dcc, html
 import dash_bootstrap_components as dbc
-from src.components.choropleth_maps_page import create_choropleth_layout
+from qtconsole.mainwindow import background
+
+from src.components.choropleth_maps_page import create_choropleth_layout, create_choropleth_layout_health_score
+# from src.components.choropleth_maps_page import create_choropleth_layout_health_score
 from src.components.histograms import create_histograms_layout
 from src.components.comparisons_graph import create_comparisons_graph_layout
 from src.components.state_map_layout import create_maps_layout
@@ -11,25 +15,47 @@ def create_home_layout():
         fluid=True,
         className='homepage-container',
         children=[
-            # Row 1: Choropleth Map and Histogram
-            dbc.Row(
-                [
-                    # Choropleth Map
-                    create_choropleth_layout(),
-                    # Histogram
-                    create_histograms_layout(),
+            dbc.Row([
+
+                dbc.Col([
+                    html.Div([
+                        html.H2("Dashboard", className="mb-4"),
+
+                        html.Div([
+                            html.H4("Informations"),
+                            html.P("Health problems by counties in USA")
+                        ], className="mt-4 p-3 text-white rounded", style={'background-color': '#39da00'}),
+                        html.Div([
+                            html.H4("Authors"),
+                            html.P("BRAVARD Lorenzo     POUYANFAR AmirHossein")
+                        ], className="mt-4 p-3 text-white rounded", style={'background-color': '#39da00'}),
+                    ], className="sidebar p-4 h-100", style={'background-color': 'white'}),
+                ], width=2, style={'padding-left': '0', 'padding-right': '0','box-shadow': '-5px 2px 15px 5px rgba(0,0,0,0.32)'}),
+                dbc.Col([
+                    dbc.Row(
+                        [
+                            # Choropleth Map
+                            dbc.Row([ create_choropleth_layout(),
+                            create_choropleth_layout_health_score(),
+
+                            ],style={'background-color': 'white', 'margin': '20px', 'flex-direction':'row','justify-content': 'space-evenly', 'border-radius': '13px', 'box-shadow': '1px 2px 50px -24px rgba(0,0,0,0.32)'}),
+
+                            # Histogram
+                            create_histograms_layout(),
+
+                        ],
+                        align='center',
+                        style={'margin': '20px','marginBottom': '20px', 'display':'flex', 'flexDirection': 'row', 'flex-flow': 'wrap', 'justify-content': 'space-around', 'margin-top': '10px'}
+                    ),
+                    dbc.Row(
+                        [
+                            create_comparisons_graph_layout(),
+                    create_maps_layout(),
+
+                        ],
+                        align='center', style={'margin':'20px'}
+                    ),
                 ],
-                align='center',  # Vertically center the columns
-                style={'marginBottom': '20px'}
-            ),
-            # Row 2: Correlation Heatmap
-            dbc.Row(
-                [
-                    create_comparisons_graph_layout(),
-                    create_maps_layout()
-                ],
-                align='center',
-            ),
-        ],
-        style={'padding': '20px'}  # Add some padding to the container
-    )
+                style={'background-color':'#f3fdf0', 'padding-left':'0'}
+            )],),
+ ]),

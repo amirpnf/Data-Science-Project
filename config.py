@@ -2,6 +2,7 @@
 
 RAW_DATA_DIR = "data/raw/US_Counties_Health_Stats.csv"
 CLEANED_DATA_DIR = "data/cleaned/US_Counties_Health_Stats_Cleaned.csv"
+HEALTH_SCORE = "data/cleaned/HEALTH_SCORE.csv"
 STATE_DATA_DIR = "data/cleaned/US_States_Health_Stats.csv"
 GEOJSON_FILE = "counties.geojson"
 STATES_GEOJSON = "states.geojson"
@@ -15,7 +16,7 @@ OPTIONS=[
     {'label': 'Depression', 'value': 'Depression Prevalence (%)'},
     {'label': 'Diabetes', 'value': 'Diabetes Prevalence (%)'},
     {'label': 'High cholesterol', 'value': 'High Cholesterol Prevalence (%)'},
-    {'label': 'Teeth lost', 'value': 'Teeth Lost Prevalence (%)'}
+    {'label': 'Teeth lost', 'value': 'Teeth Lost Prevalence (%)'},
 ]
 
 # Plot and visualization settings

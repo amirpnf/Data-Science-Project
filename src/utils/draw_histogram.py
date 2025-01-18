@@ -13,7 +13,7 @@ def draw_histogram(df, selected_disease):
         nbins=30,
         title=f"Distribution of {selected_disease.split()[0]} in US counties (2024)",
         labels={selected_disease: "Prevalence (%)"},
-        color_discrete_sequence=['purple']
+        color_discrete_sequence=['#39da00']
     )
 
     histogram_fig.update_layout(

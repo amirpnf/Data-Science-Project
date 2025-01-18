@@ -21,4 +21,17 @@ def create_choropleth_layout():
                 dcc.Graph(id='choropleth-map'),
             ],
             width=6,  # Half the width of the row
-        )
+            style={'padding': '20px', 'background-color': 'white', 'border-radius': '21px', 'width':'34vw', 'height': '30vw' },
+
+    )
+
+def create_choropleth_layout_health_score():
+    return dbc.Col(
+            [
+                html.H3('Health Score', className='title', style={'textAlign': 'center'}),
+                dcc.Graph(id='choropleth-map-health-score'),
+            ],
+
+            width=6,
+            style={'padding': '20px', 'background-color': 'white', 'border-radius':'21px', 'width':'34vw', 'height':'30vw'}  # Add some padding to the container
+    )

@@ -22,7 +22,7 @@ def plot_grouped_bar_chart(df, first_disease, second_disease):
             x=df_aggregated['State name'],
             y=df_aggregated[first_disease],
             name=first_disease,
-            marker_color='blue'
+            marker_color='#39da00'
         )
     )
 
@@ -32,7 +32,7 @@ def plot_grouped_bar_chart(df, first_disease, second_disease):
             x=df_aggregated['State name'],
             y=df_aggregated[second_disease],
             name=second_disease,
-            marker_color='orange'
+            marker_color='#cea80d'
         )
     )
 
