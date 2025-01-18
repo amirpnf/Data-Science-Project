@@ -28,11 +28,11 @@ def init_callbacks(app, df, df_health,df_health_state, state_data, geojson_file)
 
     @app.callback(
         Output('choropleth-map-health-score', 'figure'),
-        [Input('disease-selector', 'value')]  # Vous pouvez remplacer ce input avec celui que vous souhaitez
+        [Input('disease-selector', 'value')]  
     )
     def update_choropleth_health_score(selected_disease):
         choropleth_fig3 = generate_choropleth_map_health(df_health, GEOJSON_FILE)
-        choropleth_fig3.update_layout(coloraxis_colorbar=dict(title='Health index'))
+        choropleth_fig3.update_layout(coloraxis_colorbar=dict(title='Health Score'))
         return choropleth_fig3
 
     @app.callback(
@@ -64,9 +64,9 @@ def init_callbacks(app, df, df_health,df_health_state, state_data, geojson_file)
 
     @app.callback(
         Output('choropleth-map-state-health-score', 'figure'),
-        [Input('disease-selector', 'value')]  # Vous pouvez remplacer ce input avec celui que vous souhaitez
+        [Input('disease-selector', 'value')] 
     )
     def update_choropleth_state_health_score(selected_disease):
         choropleth_fig3 = generate_choropleth_map_health_by_state(df_health_state, GEOJSON_FILE)
-        choropleth_fig3.update_layout(coloraxis_colorbar=dict(title='Health index'))
+        choropleth_fig3.update_layout(coloraxis_colorbar=dict(title='Health Score'))
         return choropleth_fig3

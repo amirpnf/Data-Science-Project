@@ -14,7 +14,7 @@ def create_state_based_maps(data, disease1, disease2):
 
     data['State name'] = data['State name'].str.strip().str.title()
 
-    # Create the first map
+    # The first map
     fig1 = px.choropleth(
         data, 
         geojson=states,
@@ -29,7 +29,7 @@ def create_state_based_maps(data, disease1, disease2):
         }
     )
 
-    # Create the second map
+    # The second map
     fig2 = px.choropleth(
         data, 
         geojson=states,

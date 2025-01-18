@@ -1,9 +1,10 @@
 import pandas as pd
 import os
+from config import *
 
 def create_health_score():
 
-    data = pd.read_csv("data/cleaned/US_Counties_Health_Stats_Cleaned.csv")
+    data = pd.read_csv(CLEANED_DATA_DIR)
 
     weights = {
         'Obesity Prevalence (%)': 0.3,
@@ -26,16 +27,16 @@ def create_health_score():
     for column, weight in weights.items():
         weighted_data[column] *= weight
 
-    weighted_data['Health Index'] = weighted_data[list(weights.keys())].sum(axis=1)
+    weighted_data['Health Score'] = weighted_data[list(weights.keys())].sum(axis=1)
 
-    data['Health Index'] = weighted_data['Health Index']
+    data['Health Score'] = weighted_data['Health Score']
 
-    new_path = 'data/cleaned/Health_Score.csv'
+    new_path = HEALTH_SCORE
     os.makedirs(os.path.dirname(new_path), exist_ok=True)
     data.to_csv(new_path, index=False)
 
 def create_health_score_by_state():
-    data = pd.read_csv("data/cleaned/US_States_Health_Stats.csv")
+    data = pd.read_csv(STATE_DATA_DIR)
 
     weights = {
         'Obesity Prevalence (%)': 0.3,
@@ -58,10 +59,10 @@ def create_health_score_by_state():
     for column, weight in weights.items():
         weighted_data[column] *= weight
 
-    weighted_data['Health Index'] = weighted_data[list(weights.keys())].sum(axis=1)
+    weighted_data['Health Score'] = weighted_data[list(weights.keys())].sum(axis=1)
 
-    data['Health Index'] = weighted_data['Health Index']
+    data['Health Score'] = weighted_data['Health Score']
 
-    new_path = 'data/cleaned/State_Health_Score.csv'
+    new_path = STATE_HEALTH_SCORE
     os.makedirs(os.path.dirname(new_path), exist_ok=True)
     data.to_csv(new_path, index=False)

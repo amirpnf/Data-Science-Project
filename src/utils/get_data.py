@@ -27,7 +27,7 @@ def fetch_cdc_data(api_url, fields=None, batch_size=1000):
             raise Exception(f"API request failed: {response.status_code} - {response.text}")
         
         batch_data = response.json()
-        if not batch_data:  # Stop if no more data
+        if not batch_data:  # Stops if no more data
             break
         
         all_data.extend(batch_data)

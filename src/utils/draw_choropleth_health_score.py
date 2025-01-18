@@ -15,16 +15,16 @@ def generate_choropleth_map_health(df, geojson_path):
         geojson=counties,
         locations='CountyFIPS',
         featureidkey='properties.GEOID',
-        color='Health Index',
+        color='Health Score',
         color_continuous_scale='RdYlGn',
-        scope="usa", # Étant donné que nous étudions les États-Unis dans notre cas
+        scope="usa",
         hover_name='CountyName',
         hover_data={
             'State name' : True,
             'Total Population' : True,
             'Total adult population' : True,
             'CountyFIPS' : False,
-            'Health Index' : True,
+            'Health Score' : True,
         }
     )
 
@@ -39,22 +39,20 @@ def generate_choropleth_map_health_by_state(df_health_state, geojson_path):
     with open(STATES_GEOJSON) as f:
         states = json.load(f)
 
-    df_health_state['State name'] = df_health_state['State name'].astype(str).str.zfill(5)
-
+    df_health_state['State name'] = df_health_state['State name'].astype(str)
     fig = px.choropleth(
         df_health_state,
         geojson=states,
         locations='State name',
         featureidkey='properties.name',
-        color='Health Index',
+        color='Health Score',
         color_continuous_scale='RdYlGn',
-        scope="usa",  # Étant donné que nous étudions les États-Unis dans notre cas
-        # hover_name='State name',
+        scope="usa",
         hover_data={
             'State name': True,
             'Total Population': True,
             'Total adult population': True,
-            'Health Index': True,
+            'Health Score': True,
         }
     )
 

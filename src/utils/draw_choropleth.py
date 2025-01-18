@@ -19,8 +19,8 @@ def generate_choropleth_map(df, disease, geojson_path):
         locations='CountyFIPS',
         featureidkey='properties.GEOID',
         color=disease,
-        color_continuous_scale='RdYlGn_r',
-        scope="usa", # Étant donné que nous étudions les États-Unis dans notre cas
+        color_continuous_scale=CHOROPLETH_COLOR_SCALE,
+        scope="usa",
         hover_name='CountyName',
         hover_data={
             'State name' : True,

@@ -32,7 +32,7 @@ def create_comparisons_graph_layout():
                 style={'margin-top': '20px'}
             ),
             ],
-            width=12,  # Full width for the heatmap
+            width=12, 
             style={'padding': '20px', 'background-color': 'white', 'border-radius': '21px', 'box-shadow': '1px 2px 50px -24px rgba(0,0,0,0.32)'}
 
     )

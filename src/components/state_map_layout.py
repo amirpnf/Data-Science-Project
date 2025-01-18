@@ -17,7 +17,7 @@ def create_maps_layout():
                     ),
                     dcc.Graph(id='state-map1'),
                 ],
-                width=6,  # Half the width of the row
+                width=6, 
             ),
             dbc.Col(
                 [
@@ -30,7 +30,7 @@ def create_maps_layout():
                     ),
                     dcc.Graph(id='state-map2'),
                 ],
-                width=6,  # Half the width of the row
+                width=6, 
             ),
         ], style={'margin':'20px', 'background-color':'white', 'border-radius':'13px', 'padding-top':'10px', 'box-shadow': '1px 2px 50px -24px rgba(0,0,0,0.32)'},
     )

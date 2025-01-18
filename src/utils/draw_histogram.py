@@ -10,7 +10,7 @@ def draw_histogram(df, selected_disease):
     histogram_fig = px.histogram(
         df,
         x=selected_disease,
-        nbins=30,
+        nbins=HISTOGRAM_BINS,
         title=f"Distribution of {selected_disease.split()[0]} in US counties (2024)",
         labels={selected_disease: "Prevalence (%)"},
         color_discrete_sequence=['#39da00']
