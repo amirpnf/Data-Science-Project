@@ -25,6 +25,9 @@ try:
 except Exception as e:
     print(f"Error fetching data: {e}")
 
+create_health_score()
+create_health_score_by_state()
+
 clean_dataset(RAW_DATA_DIR)
 create_state_dataset()
 df = pd.read_csv(CLEANED_DATA_DIR)
@@ -32,13 +35,9 @@ df_health = pd.read_csv(HEALTH_SCORE)
 df_health_state = pd.read_csv(STATE_HEALTH_SCORE)
 state_data = pd.read_csv(STATE_DATA_DIR)
 
-app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
-try:
-    create_health_score()
-    create_health_score_by_state()
-except Exception as e:
-    print(f"Error healthScore: {e}")
 
+
+app = dash.Dash(__name__, suppress_callback_exceptions=True, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 home_layout = create_home_layout()
 create_choropleth_layout_health_score()
