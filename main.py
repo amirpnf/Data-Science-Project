@@ -3,7 +3,7 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 from src.utils.get_data import get_dataset, fetch_cdc_data
 from src.utils.draw_choropleth import generate_choropleth_map
-from src.utils.draw_choropleth_test import generate_choropleth_map2
+from src.utils.draw_choropleth_health_score import generate_choropleth_map_health
 from src.utils.draw_histogram import draw_histogram
 from src.utils.visualizations import plot_grouped_bar_chart
 import pandas as pd

@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 from config import *
 
-def generate_choropleth_map2(df, geojson_path):
+def generate_choropleth_map_health(df, geojson_path):
 
     with open(geojson_path) as f:
         counties = json.load(f)

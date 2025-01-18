@@ -1,9 +1,6 @@
 import pandas as pd
 import os
 
-from sympy.physics.units import newton
-
-
 def create_health_score():
 
     data = pd.read_csv("data/cleaned/US_Counties_Health_Stats_Cleaned.csv")
@@ -68,5 +65,3 @@ def create_health_score_by_state():
     new_path = 'data/cleaned/State_Health_Score.csv'
     os.makedirs(os.path.dirname(new_path), exist_ok=True)
     data.to_csv(new_path, index=False)
-
-

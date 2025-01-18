@@ -32,5 +32,5 @@ def create_maps_layout():
                 ],
                 width=6,  # Half the width of the row
             ),
-        ], style={'margin':'20px', 'background-color':'white', 'border-radius':'13px', 'padding-top':'10px'},
+        ], style={'margin':'20px', 'background-color':'white', 'border-radius':'13px', 'padding-top':'10px', 'box-shadow': '1px 2px 50px -24px rgba(0,0,0,0.32)'},
     )

@@ -2,7 +2,7 @@ from dash import Input, Output
 import plotly.express as px
 import plotly.graph_objects as go
 from src.utils.draw_choropleth import generate_choropleth_map
-from src.utils.draw_choropleth_test import generate_choropleth_map2, generate_choropleth_map_health_by_state
+from src.utils.draw_choropleth_health_score import generate_choropleth_map_health, generate_choropleth_map_health_by_state
 from src.utils.draw_histogram import draw_histogram
 from src.utils.visualizations import plot_grouped_bar_chart
 from src.utils.state_map import create_state_based_maps
@@ -31,7 +31,7 @@ def init_callbacks(app, df, df_health,df_health_state, state_data, geojson_file)
         [Input('disease-selector', 'value')]  # Vous pouvez remplacer ce input avec celui que vous souhaitez
     )
     def update_choropleth_health_score(selected_disease):
-        choropleth_fig3 = generate_choropleth_map2(df_health, GEOJSON_FILE)
+        choropleth_fig3 = generate_choropleth_map_health(df_health, GEOJSON_FILE)
         choropleth_fig3.update_layout(coloraxis_colorbar=dict(title='Health index'))
         return choropleth_fig3
 
